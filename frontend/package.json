@@ -18,7 +18,8 @@
   "license": "MIT",
   "packageManager": "pnpm@10.15.1",
   "dependencies": {
-    "@tauri-apps/api": "^2.8.0"
+    "@tauri-apps/api": "^2.8.0",
+    "lucide-react": "^0.542.0"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^2.8.4",

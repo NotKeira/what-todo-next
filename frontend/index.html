@@ -1,20 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>What Todo Next</title>
     <link rel="stylesheet" href="./src/styles/main.css">
 </head>
+
 <body>
     <div id="app">
-        <h1>What Todo Next</h1>
-        <div id="greet-input">
-            <input id="greet-input-el" placeholder="Enter a name..." />
-            <button type="button" id="greet-btn">Greet</button>
+        <aside class="sidebar" role="navigation" aria-label="Main navigation" id="sidebar">
+            <div class="sidebar-header">
+                <h1>What Todo Next</h1>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <h2 class="nav-heading">Tasks</h2>
+                    <ul class="nav-list" role="list">
+                        <li><button class="nav-item active" data-filter="all" aria-current="page">
+                                <span class="nav-icon"></span>
+                                <span class="nav-text">All Tasks</span>
+                                <span class="nav-count" id="all-count">5</span>
+                            </button></li>
+                        <li><button class="nav-item" data-filter="pending">
+                                <span class="nav-icon"></span>
+                                <span class="nav-text">Pending</span>
+                                <span class="nav-count" id="pending-count">3</span>
+                            </button></li>
+                        <li><button class="nav-item" data-filter="completed">
+                                <span class="nav-icon"></span>
+                                <span class="nav-text">Completed</span>
+                                <span class="nav-count" id="completed-count">2</span>
+                            </button></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h2 class="nav-heading">Quick Stats</h2>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-value" id="total-tasks">5</span>
+                            <span class="stat-label">Total</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value" id="completion-rate">40%</span>
+                            <span class="stat-label">Complete</span>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <div class="resize-handle" id="resize-handle" aria-label="Resize sidebar"></div>
+
+        <main class="main-content" role="main">
+            <header class="content-header">
+                <div class="add-task-section">
+                    <div class="add-task-form">
+                        <label for="new-task-input" class="visually-hidden">Add new task</label>
+                        <input type="text" id="new-task-input" placeholder="Add a new task..." class="task-input"
+                            aria-describedby="task-input-help" />
+                        <button type="button" id="add-task-btn" class="btn btn-primary" aria-label="Add new task">
+                            Add Task
+                        </button>
+                    </div>
+                    <div id="task-input-help" class="visually-hidden">Press Enter or click Add Task to create a new task
+                    </div>
+                </div>
+
+                <div class="task-filters" role="tablist" aria-label="Task filters">
+                    <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true"
+                        aria-controls="tasks-container">All</button>
+                    <button class="filter-btn" data-filter="pending" role="tab" aria-selected="false"
+                        aria-controls="tasks-container">Pending</button>
+                    <button class="filter-btn" data-filter="completed" role="tab" aria-selected="false"
+                        aria-controls="tasks-container">Completed</button>
+                </div>
+            </header>
+
+            <section class="tasks-section">
+                <div id="tasks-container" class="tasks-container" role="tabpanel" aria-live="polite">
+                    <!-- Tasks will be populated by JavaScript -->
+                </div>
+            </section>
+        </main>
+
+        <!-- Task Detail Modal -->
+        <div id="task-detail-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
+            <div class="modal-overlay" data-action="close-modal"></div>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modal-title">Task Details</h2>
+                    <button class="modal-close" data-action="close-modal" aria-label="Close task details">
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="task-detail-form">
+                        <div class="form-group">
+                            <label for="detail-task-title">Title</label>
+                            <input type="text" id="detail-task-title" class="form-input" />
+                        </div>
+                        <div class="form-group">
+                            <label for="detail-task-description">Description</label>
+                            <textarea id="detail-task-description" class="form-textarea" rows="4"
+                                placeholder="Add a description..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="detail-task-priority">Priority</label>
+                            <select id="detail-task-priority" class="form-select">
+                                <option value="low">Low</option>
+                                <option value="medium">Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="detail-task-due-date">Due Date</label>
+                            <input type="date" id="detail-task-due-date" class="form-input" />
+                        </div>
+                        <div class="task-detail-meta">
+                            <div class="meta-item">
+                                <span class="meta-label">Created:</span>
+                                <span id="detail-created-date">-</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Status:</span>
+                                <span id="detail-status">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-action="close-modal">Cancel</button>
+                    <button class="btn btn-primary" data-action="save-task">Save Changes</button>
+                </div>
+            </div>
         </div>
-        <p id="greet-msg"></p>
     </div>
     <script type="module" src="./src/main.ts"></script>
 </body>
+
 </html>
