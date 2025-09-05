@@ -1,0 +1,36 @@
+{
+  "$schema": "https://schema.tauri.app/config/2.0.0",
+  "productName": "What Todo Next",
+  "version": "./Cargo.toml",
+  "identifier": "boo.keira.what-todo-next",
+  "build": {
+    "frontendDist": "../frontend/dist",
+    "devUrl": "http://localhost:5173"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "What Todo Next",
+        "width": 1000,
+        "height": 700,
+        "minWidth": 800,
+        "minHeight": 600,
+        "resizable": true,
+        "maximized": false,
+        "maximizable": true,
+        "decorations": true
+      }
+    ],
+    "security": {
+        "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "category": "Productivity",
+    "copyright": "Copyright © 2025 Keira Hopkins",
+    "shortDescription": "Modern cross-platform todo application",
+    "longDescription": "A modern cross-platform desktop todo application built with Tauri and TypeScript. Features clean design, SQLite storage, and native performance."
+  }
+}
