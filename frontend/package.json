@@ -1,14 +1,21 @@
 {
-  "name": "frontend",
+  "name": "@what-todo/frontend",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A modern cross-platform desktop todo application built with Tauri and TypeScript. Features clean design, SQLite storage, and native performance.",
+  "private": false,
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "url": "https://github.com/NotKeira/what-todo-next",
+    "type": "github"
+  },
+  "author": "Keira Hopkins <open-source@keirahopkins.co.uk> (https://keirahopkins.co.uk)",
+  "license": "MIT",
   "packageManager": "pnpm@10.15.1",
   "dependencies": {
     "@tauri-apps/api": "^2.8.0"
